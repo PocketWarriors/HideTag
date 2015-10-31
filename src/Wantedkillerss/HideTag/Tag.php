@@ -21,12 +21,12 @@ class Tag extends PluginBase{
      }
      
      public function hide(Player $player){
-          $player->setNameTag("");
+          $player->setNameTagVisible(false);
           $player->sendMessage("[HideTag] Your NameTag has been hidden!!");
      }
      
      public function unhide(Player $player){
-          $player->setNameTag($player->getName());
+          $player->setNameTagVisible(true);
           $player->sendMessage("[HideTag] Your NameTag has been unhidden!");
      }
      
