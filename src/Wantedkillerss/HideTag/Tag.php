@@ -10,6 +10,8 @@ use pocketmine\command\CommandSender;
 use pocketmine\command\Command;
 use pocketmine\utils\TextFormat;
 
+$tags = array();
+
 class Tag extends PluginBase{
 
      public function onEnable(){
@@ -21,13 +23,16 @@ class Tag extends PluginBase{
      }
      
      public function hide(Player $player){
+          $tag = $player->getNameTag();
           $player->setNameTag("");
-          $player->sendMessage("[HideTag] Your NameTag has been hidden!!");
+          $player->sendMessage("[HideTag] Your NameTag has been hidden!");
+          $tags[$player->getName()] = $tag;
      }
      
      public function unhide(Player $player){
-          $player->setNameTag($player->getName());
+          $player->setNameTag($tags[$player->getName()]);
           $player->sendMessage("[HideTag] Your NameTag has been unhidden!");
+          
      }
      
      public function onCommand(CommandSender $issuer, Command $cmd, $label, array $args){
